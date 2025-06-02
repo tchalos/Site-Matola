@@ -1,0 +1,80 @@
+/* estilo-menu.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Estilos para o menu de navegação */
+nav ul {
+    list-style: none; /* Remove os marcadores de lista */
+    padding: 0; /* Remove o preenchimento padrão da lista */
+    margin: 0; /* Remove a margem padrão da lista */
+    display: flex; /* Usa flexbox para alinhar os itens em uma linha */
+    justify-content: center; /* Centraliza os itens do menu horizontalmente */
+    background-color: #2c3e50; /* Uma cor de fundo mais escura para o menu */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Adiciona uma pequena sombra */
+}
+
+nav ul li {
+    margin: 0 10px; /* Espaçamento entre os itens do menu */
+}
+
+nav ul li a {
+    display: block; /* Faz o link preencher o espaço do item da lista */
+    color: white; /* Cor do texto do link */
+    text-decoration: none; /* Remove o sublinhado do link */
+    padding: 15px 20px; /* Adiciona preenchimento interno aos links */
+    transition: background-color 0.3s ease; /* Transição suave ao passar o mouse */
+    font-weight: bold; /* Deixa o texto do link em negrito */
+}
+
+nav ul li a:hover {
+    background-color: #34495e; /* Cor de fundo ao passar o mouse sobre o link */
+    border-radius: 5px; /* Bordas arredondadas ao passar o mouse */
+}
+
+/* Estilos para o conteúdo principal */
+.content {
+    padding: 40px 20px;
+    max-width: 960px; /* Largura máxima para o conteúdo */
+    margin: 20px auto; /* Centraliza o conteúdo na página */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.content h1, .content h2, .content h3 {
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db; /* Linha azul sob os títulos */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.content ul {
+    list-style: disc; /* Marcadores de lista padrão */
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+.content ul ul { /* Para as listas aninhadas (sub-cursos) */
+    list-style: circle; /* Marcadores de lista diferentes */
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.content p {
+    line-height: 1.6; /* Espaçamento entre linhas para melhor leitura */
+    margin-bottom: 15px;
+}
+
+/* Estilo para a linha divisória */
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #ccc;
+    margin: 40px 0;
+}

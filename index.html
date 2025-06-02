@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal - Meu Site</title>
+    <style>
+        /* Estilos básicos para o menu */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            background-color: azure(58, 89, 89);
+            background-image: url(fotos/image.png);
+            background-size: 900px, 0px;
+            
+            
+            color: #333;
+        }
+        nav {
+            background-color: transparent; /* Azul escuro, tipo salesiano */
+            padding: 15px 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; /* Permite que os itens quebrem linha em telas menores */
+        }
+        nav ul li {
+            margin: 0 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        nav ul li a:hover {
+            background-color: #003366; /* Azul mais escuro ao passar o mouse */
+        }
+        .content {
+            padding: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="cursos.html">Cursos</a></li>
+            <li><a href="informacoes.html">Informações</a></li>
+            <li><a href="boletim.html">Boletim Salesiano</a></li>
+            <li><a href="pagamentos.html">Pagamentos</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h1>Bem Vindo ao Centro de Formacao Profissional Salesianos Matola</h1>
+
+        <p>Use o menu acima para navegar pelas diferentes seções do site.</p>
+    </div>
+
+</body>
+</html>

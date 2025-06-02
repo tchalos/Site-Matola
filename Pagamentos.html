@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opções de Pagamento</title>
+    <link rel="stylesheet" href="estilo-menu.css">
+    <style>
+        /* Estilos específicos para a página de pagamentos */
+        .payment-options {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+        .payment-options h2 {
+            color: #004d99;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .payment-method {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .payment-method h3 {
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 15px;
+            cursor: pointer; /* Para indicar que é clicável */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .payment-method h3 span {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+        .payment-method h3.expanded span {
+            transform: rotate(90deg); /* Gira o ícone quando expandido */
+        }
+        .payment-details {
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+            margin-top: 15px;
+            display: none; /* Escondido por padrão, será mostrado com JS */
+        }
+        .payment-details p {
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+        .mobile-wallet-buttons {
+            display: flex;
+            flex-direction: column; /* Coluna para os botões de carteira móvel */
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .mobile-wallet-buttons button {
+            background-color: #007bff; /* Azul */
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        .mobile-wallet-buttons button:hover {
+            background-color: #0056b3;
+        }
+        .mobile-wallet-details {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            font-size: 0.9em;
+            display: none; /* Escondido por padrão */
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="cursos.html">Cursos</a></li>
+            <li><a href="informacoes.html">Informações</a></li>
+            <li><a href="boletim.html">Boletim Salesiano</a></li>
+            <li><a href="pagamentos.html">Pagamentos</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <div class="payment-options">
+            <h2>Escolha sua Opção de Pagamento</h2>
+
+            <div class="payment-method">
+                <h3 id="transferenciaBtn">Transferência Bancária <span class="arrow-icon">></span></h3>
+                <div id="transferenciaDetails" class="payment-details">
+                    <p><strong>Dados Bancários:</strong></p>
+                    <p>Banco: Banco XYZ</p>
+                    <p>Conta: 1234567890</p>
+                    <p>NIB: 0000 0000 0000 0000 0000 0000</p>
+                    <p>Nome: Instituição Salesiana</p>
+                    <p>Referência: [Seu Nome / Número de Matrícula]</p>
+                    <p>Por favor, envie o comprovativo para pagamentos@salesiana.com após a transferência.</p>
+                </div>
+            </div>
+
+            <div class="payment-method">
+                <h3 id="carteiraBtn">Carteira Móvel <span class="arrow-icon">></span></h3>
+                <div id="carteiraDetails" class="payment-details">
+                    <p>Selecione a sua opção de carteira móvel:</p>
+                    <div class="mobile-wallet-buttons">
+                        <button id="mpesaBtn">Mpesa</button>
+                        <button id="emolaBtn">E-mola</button>
+                        <button id="mkechBtn">Mkesh</button>
+                    </div>
+
+                    <div id="mpesaDetails" class="mobile-wallet-details">
+                        <p><strong>Mpesa:</strong></p>
+                        <p>Número: +258 84 123 4567</p>
+                        <p>Nome: Instituição Salesiana Mpesa</p>
+                        <p>Instruções: Digite *150# e siga as instruções para 'Enviar Dinheiro'.</p>
+                    </div>
+                    <div id="emolaDetails" class="mobile-wallet-details">
+                        <p><strong>Emola:</strong></p>
+                        <p>Número: +258 86 987 6543</p>
+                        <p>Nome: Instituição Salesiana Emola</p>
+                        <p>Instruções: Digite *150# e siga as instruções para 'Transferência'.</p>
+                    </div>
+                    <div id="mkechDetails" class="mobile-wallet-details">
+                        <p><strong>M-Kesh:</strong></p>
+                        <p>Número: +258 87 234 5678</p>
+                        <p>Nome: Instituição Salesiana M-Kesh</p>
+                        <p>Instruções: Digite *150# e siga as instruções para 'Pagamento de Serviços'.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // JavaScript para expandir/recolher os detalhes e mostrar opções de carteira móvel
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const transferenciaBtn = document.getElementById('transferenciaBtn');
+            const transferenciaDetails = document.getElementById('transferenciaDetails');
+
+            const carteiraBtn = document.getElementById('carteiraBtn');
+            const carteiraDetails = document.getElementById('carteiraDetails');
+
+            const mpesaBtn = document.getElementById('mpesaBtn');
+            const emolaBtn = document.getElementById('emolaBtn');
+            const mkechBtn = document.getElementById('mkechBtn');
+
+            const mpesaDetails = document.getElementById('mpesaDetails');
+            const emolaDetails = document.getElementById('emolaDetails');
+            const mkechDetails = document.getElementById('mkechDetails');
+
+            function toggleDetails(button, details) {
+                const isExpanded = details.style.display === 'block';
+                details.style.display = isExpanded ? 'none' : 'block';
+                button.classList.toggle('expanded', !isExpanded);
+            }
+
+            function hideAllMobileDetails() {
+                mpesaDetails.style.display = 'none';
+                emolaDetails.style.display = 'none';
+                mkechDetails.style.display = 'none';
+            }
+
+            transferenciaBtn.addEventListener('click', function() {
+                toggleDetails(transferenciaBtn, transferenciaDetails);
+                // Opcional: Se abrir uma, fechar a outra principal
+                carteiraDetails.style.display = 'none';
+                carteiraBtn.classList.remove('expanded');
+                hideAllMobileDetails();
+            });
+
+            carteiraBtn.addEventListener('click', function() {
+                toggleDetails(carteiraBtn, carteiraDetails);
+                // Opcional: Se abrir uma, fechar a outra principal
+                transferenciaDetails.style.display = 'none';
+                transferenciaBtn.classList.remove('expanded');
+                hideAllMobileDetails(); // Esconde os detalhes específicos da carteira móvel ao recolher
+            });
+
+            mpesaBtn.addEventListener('click', function() {
+                hideAllMobileDetails();
+                mpesaDetails.style.display = 'block';
+            });
+
+            emolaBtn.addEventListener('click', function() {
+                hideAllMobileDetails();
+                emolaDetails.style.display = 'block';
+            });
+
+            mkechBtn.addEventListener('click', function() {
+                hideAllMobileDetails();
+                mkechDetails.style.display = 'block';
+            });
+        });
+    </script>
+
+</body>
+</html>
